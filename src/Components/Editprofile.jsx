@@ -41,7 +41,7 @@ function Editprofile({ userdata }) {
         setShowtoast(false);
       }, 2000);
     } catch (err) {
-     console.log(err);
+     
      setError(err?.response?.data?.error[0])
      
     }

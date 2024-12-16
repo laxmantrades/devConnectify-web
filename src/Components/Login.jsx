@@ -6,37 +6,36 @@ import { addUser } from "../utils/userSlice";
 import { BASE_URL } from "../utils/constants";
 
 const Login = () => {
-  const[firstName,setFirstName]=useState("")
-  const[lastName,setLastName]=useState("")
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [emailId, setEmail] = useState("");
   const [signUp, setSignup] = useState(false);
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  
-  
- 
 
-  const handleSingUP = async() => {
+  const handleSingUP = async () => {
     try {
-      const res=await axios.post(BASE_URL+"signup",{firstName,lastName,emailId,password},{
-        withCredentials:true
-      })
+      const res = await axios.post(
+        BASE_URL + "signup",
+        { firstName, lastName, emailId, password },
+        {
+          withCredentials: true,
+        }
+      );
+     
+
+
+      dispatch(addUser(res?.data?.data?.savedUser));
+
+      navigate("/profile");
+    } catch (error) {
+      setError(error?.response?.data);
+      
    
       
-     
-      
-     
-      dispatch(addUser(res.data.data.savedUser));
-      navigate("/profile")
-    } catch (error) {
-      console.log(error);
-      
-      setError(error.response.data);
-      
     }
-    
   };
 
   const handleClick = async () => {
@@ -53,10 +52,9 @@ const Login = () => {
       );
       navigate("/feed");
       dispatch(addUser(res.data));
-      
     } catch (error) {
       setError(error?.response?.data);
-      console.log(error);
+      
     }
   };
 
@@ -119,13 +117,12 @@ const Login = () => {
               type="text"
               value={emailId}
               onChange={(e) => setEmail(e.target.value)}
-              onFocus={(e)=>setError("")}
+              onFocus={(e) => setError("")}
               className="grow"
               placeholder="Email"
             />
           </label>
 
-         
           <h1 className="text-primary-content">Password</h1>
           <label className="input input-bordered flex items-center gap-2">
             <svg
@@ -144,7 +141,7 @@ const Login = () => {
               type=""
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              onFocus={(e)=>setError("")}
+              onFocus={(e) => setError("")}
               className="grow"
             />
           </label>
@@ -158,18 +155,21 @@ const Login = () => {
           </div>
           <p className="text-red-500">{error}</p>
           <div className="flex items-center justify-center">
-            <h1 className="text-white text-center"> {signUp ? "Already have a account?":"Don't have account ?"}</h1>
+            <h1 className="text-white text-center">
+              {" "}
+              {signUp ? "Already have a account?" : "Don't have account ?"}
+            </h1>
             <h1
               onClick={() => {
                 setSignup(!signUp);
                 setEmail("");
                 setPassword("");
                 setError("");
-                console.log(signUp);
+                ;
               }}
               className="text-white text-center mx-4 cursor-pointer underline"
             >
-              {signUp?"Login":"SingUP"}
+              {signUp ? "Login" : "SingUP"}
             </h1>
           </div>
         </div>
