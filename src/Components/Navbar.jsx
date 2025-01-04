@@ -33,7 +33,9 @@ const Navbar = () => {
         <div className="flex-1">
           <Link to={"/feed"}>
             {" "}
-            <h1 className="btn btn-ghost text-2xl font-bold">devTinder</h1>
+            <h1 className="btn btn-ghost text-2xl font-bold">
+              devConnectify.com
+            </h1>
           </Link>
         </div>
         {user && (
@@ -72,7 +74,7 @@ const Navbar = () => {
                   <Link to={"/requests"}>Requests</Link>
                 </li>
                 <li>
-                  <Link to={'/setting'}>Settings</Link>
+                  <Link to={"/setting"}>Settings</Link>
                 </li>
                 <li onClick={handleSignOut}>
                   <a>Logout</a>
