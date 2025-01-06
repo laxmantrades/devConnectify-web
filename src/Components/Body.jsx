@@ -38,11 +38,11 @@ const Body = () => {
     fetchUser();}
   }, [userData]);
   return (
-    <div>
+    <>
       <Navbar />
       <Outlet />
-      <Footer />
-    </div>
+     <Footer/>
+    </>
   );
 };
 export default Body;

@@ -11,22 +11,24 @@ import Requests from "./Components/Requests";
 import Setting from "./Components/Setting";
 import Error from "./Components/Error";
 import SearchPage from "./Components/SearchPage";
+import Home from "./Components/Home";
 
 function App() {
   return (
     <Provider store={appStore}>
       <BrowserRouter basename="/">
         <Routes>
+          
           <Route path="/" element={<Body />}>
+            <Route path="/home" element={<Home />} />
             <Route path="/feed" element={<Feed />} />
             <Route path="/login" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/connection" element={<Connection />} />
             <Route path="/requests" element={<Requests />} />
-            <Route path="/error" element={<Error/>} />
-            <Route path="/search" element={<SearchPage/>} />
-            <Route path="/setting" element={<Setting/>}></Route>
-            
+            <Route path="/error" element={<Error />} />
+            <Route path="/search" element={<SearchPage />} />
+            <Route path="/setting" element={<Setting />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>

@@ -8,9 +8,9 @@ import { BASE_URL } from "../utils/constants";
 const Login = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [emailId, setEmail] = useState("");
+  const [emailId, setEmail] = useState("virat@gmail.com");
   const [signUp, setSignup] = useState(false);
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState("ViratKohli@123");
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -59,13 +59,13 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center ">
-      <div className="card bg-primary  w-96 ">
+    <div className="flex items-center justify-center mt-10">
+      <div className="card border  shadow-2xl text-black  w-96 ">
         <div className="card-body">
           {signUp && (
             <div>
               {" "}
-              <h1 className="text-primary-content">FirstName</h1>
+              <h1 className="">FirstName</h1>
               <label className="input input-bordered flex items-center gap-2 mb-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -83,7 +83,7 @@ const Login = () => {
                   placeholder="First Name"
                 />
               </label>
-              <h1 className="text-primary-content">Last Name</h1>
+              <h1 className="">Last Name</h1>
               <label className="input input-bordered flex items-center gap-2 mb-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -103,7 +103,7 @@ const Login = () => {
               </label>
             </div>
           )}
-          <h1 className="text-primary-content">Email Id</h1>
+          <h1 className="">Email Id</h1>
           <label className="input input-bordered flex items-center gap-2 mb-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -123,7 +123,7 @@ const Login = () => {
             />
           </label>
 
-          <h1 className="text-primary-content">Password</h1>
+          <h1 className="">Password</h1>
           <label className="input input-bordered flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -148,14 +148,14 @@ const Login = () => {
           <div className="  pt-5 text-black text-3xl  flex items-center justify-center">
             <button
               onClick={signUp ? handleSingUP : handleClick}
-              className=" p-2 bg-white w-40 rounded-lg text-4xl font-bold"
+              className=" p-2 bg-blue-600 text-white w-40 rounded-lg text-4xl font-bold"
             >
               {signUp ? " SignUp" : "Login"}
             </button>
           </div>
           <p className="text-red-500">{error}</p>
           <div className="flex items-center justify-center">
-            <h1 className="text-white text-center">
+            <h1 className=" text-center">
               {" "}
               {signUp ? "Already have a account?" : "Don't have account ?"}
             </h1>
@@ -167,7 +167,7 @@ const Login = () => {
                 setError("");
                 ;
               }}
-              className="text-white text-center mx-4 cursor-pointer underline"
+              className=" text-center mx-4 cursor-pointer underline"
             >
               {signUp ? "Login" : "SingUP"}
             </h1>
