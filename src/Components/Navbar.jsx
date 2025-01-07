@@ -2,16 +2,36 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { BASE_URL } from "../utils/constants";
 import { Link, useNavigate } from "react-router";
-import { removeUser } from "../utils/userSlice";
+import { addUser, removeUser } from "../utils/userSlice";
 import { removeALLFeed } from "../utils/feedSlice";
+import { useEffect } from "react";
 
 const Navbar = () => {
   const user = useSelector((store) => store?.user);
-  const feed = useSelector((store) => store.feed);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const fetchUser = async () => {
+    if (user) return;
+ 
+    
+      const res = await axios.get(
+        BASE_URL + "profile/view",
+
+        {
+          withCredentials: true,
+        }
+      );
+      dispatch(addUser(res.data));
+      
+  
+  };
+  useEffect(() => {
+    
+    fetchUser();
+  }, []);
   const handleSignOut = async () => {
-    try {
+   
       const res = await axios.post(
         BASE_URL + "signout",
         {},
@@ -22,9 +42,7 @@ const Navbar = () => {
       navigate("/login");
       dispatch(removeUser());
       dispatch(removeALLFeed());
-    } catch (error) {
-      console.log(error);
-    }
+   
   };
 
   return (
