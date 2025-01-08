@@ -19,6 +19,7 @@ import Error from "./Components/Error";
 import SearchPage from "./Components/SearchPage";
 import Home from "./Components/Home";
 import { ConditionalHomePage, ConditionalLogin, ProtectedRoute } from "./Components/ProtectedRoute";
+import ViewProfile from "./Components/ViewProfile";
 
 const appRouter = createBrowserRouter([
   {
@@ -48,7 +49,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "connection",
-        element: <ProtectedRoute><Feed /></ProtectedRoute>,
+        element: <ProtectedRoute><Connection /></ProtectedRoute>,
       },
       {
         path: "requests",
@@ -65,6 +66,10 @@ const appRouter = createBrowserRouter([
       {
         path: "setting",
         element: <ProtectedRoute><Setting /></ProtectedRoute>,
+      },
+      {
+        path: "profile/:userId",
+        element: <ProtectedRoute>< ViewProfile/></ProtectedRoute>,
       },
     ],
   },

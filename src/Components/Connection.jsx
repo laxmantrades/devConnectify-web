@@ -1,7 +1,7 @@
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const Connection = () => {
   const [connection, setConnection] = useState(null);
@@ -35,7 +35,7 @@ const Connection = () => {
           connection?.map((user) => {
             const { firstName, lastName, photoUrl, about } = user;
             return (
-              <div key={user._id} className="flex  m-4 p-2 h-26  bg-slate-600 rounded-lg shadow-2xl">
+              <Link to={`/profile/${user._id}`}><div key={user._id} className="flex  m-4 p-2 h-26  bg-slate-600 rounded-lg shadow-2xl">
                 <div className="">
                   <img
                     className="w-28 h-28  mx-2 rounded-full object-cover "
@@ -49,6 +49,7 @@ const Connection = () => {
                   <h1 className="text-white">{about}</h1>
                 </div>
               </div>
+              </Link>
             );
           })}
       </div>
