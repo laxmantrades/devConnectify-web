@@ -49,7 +49,7 @@ const Navbar = () => {
     <div>
       <div className="navbar bg-blue-400">
         <div className="flex-1">
-          <Link to={"/feed"}>
+          <Link to={"/"}>
             {" "}
             <h1 className="btn btn-ghost text-2xl font-bold">
               devConnectify.com

@@ -4,13 +4,14 @@ import { BASE_URL } from "../utils/constants";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import axios from "axios";
+import ProfileCard from "./ProfileCard";
 
 const ViewProfile = () => {
   const [user, setUser] = useState("");
   const params = useParams();
 
   const { userId } = params;
-  console.log(userId);
+ 
 
   const fetchData = async () => {
     try {
@@ -29,7 +30,7 @@ const ViewProfile = () => {
 
   return (
     <div>
-      <Usercard userdata={user} />
+      <ProfileCard user={user}/>
     </div>
   );
 };

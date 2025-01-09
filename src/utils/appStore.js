@@ -1,4 +1,5 @@
 import buttonSlice from "./buttonSlice";
+import editProfile from "./editProfile";
 import feedSlice from "./feedSlice";
 import requestSlice from "./requestSlice";
 import searchSlice from "./searchSlice";
@@ -13,6 +14,7 @@ const appStore = configureStore({
     request: requestSlice,
     button:buttonSlice,
     search:searchSlice,
+    editProfileButton:editProfile
   },
 });
 export default appStore;

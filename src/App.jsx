@@ -18,42 +18,58 @@ import Setting from "./Components/Setting";
 import Error from "./Components/Error";
 import SearchPage from "./Components/SearchPage";
 import Home from "./Components/Home";
-import { ConditionalHomePage, ConditionalLogin, ProtectedRoute } from "./Components/ProtectedRoute";
+import {
+  ConditionalHomePage,
+  ConditionalLogin,
+  ProtectedRoute,
+} from "./Components/ProtectedRoute";
 import ViewProfile from "./Components/ViewProfile";
+import Editprofile from "./Components/Editprofile";
 
 const appRouter = createBrowserRouter([
   {
     path: "/",
-    element: (
-     
-
-        <Body />
-     
-    ),
+    element: <Body />,
     children: [
       {
         path: "/",
-        element: <ConditionalHomePage/>,
+        element: <ConditionalHomePage />,
       },
       {
         path: "feed",
-        element: <ProtectedRoute><Feed /></ProtectedRoute>,
+        element: (
+          <ProtectedRoute>
+            <Feed />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "login",
-        element: <ConditionalLogin/>,
+        element: <ConditionalLogin />,
       },
       {
         path: "profile",
-        element: <ProtectedRoute><Profile /></ProtectedRoute>,
+        element: (
+          <ProtectedRoute>
+            <Profile />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "connection",
-        element: <ProtectedRoute><Connection /></ProtectedRoute>,
+        element: (
+          <ProtectedRoute>
+            <Connection />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "requests",
-        element: <ProtectedRoute><Requests /></ProtectedRoute>,
+        element: (
+          <ProtectedRoute>
+            <Requests />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "error",
@@ -61,15 +77,35 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "search",
-        element: <ProtectedRoute><SearchPage /></ProtectedRoute>,
+        element: (
+          <ProtectedRoute>
+            <SearchPage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "setting",
-        element: <ProtectedRoute><Setting /></ProtectedRoute>,
+        element: (
+          <ProtectedRoute>
+            <Setting />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "profile/:userId",
-        element: <ProtectedRoute>< ViewProfile/></ProtectedRoute>,
+        element: (
+          <ProtectedRoute>
+            <ViewProfile />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "profile/edit",
+        element: (
+          <ProtectedRoute>
+            <Editprofile />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
