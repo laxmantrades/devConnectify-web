@@ -4,10 +4,11 @@ import { BASE_URL } from "../utils/constants";
 import { Link, useNavigate } from "react-router";
 import { addUser, removeUser } from "../utils/userSlice";
 import { removeALLFeed } from "../utils/feedSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
   const user = useSelector((store) => store?.user);
+  const [button,setButton]=useState(false)
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -45,6 +46,7 @@ const Navbar = () => {
    
   };
 
+
   return (
     <div>
       <div className="navbar bg-blue-400">
@@ -69,11 +71,16 @@ const Navbar = () => {
                   <img
                     alt="Tailwind CSS Navbar component"
                     src={user?.photoUrl}
+                    onClick={()=>setButton(!button)}
                   />
                 </div>
               </div>
 
-              <ul
+              {button && <ul
+              onClick={()=>{setButton(!button)
+                
+                
+              }}
                 tabIndex={0}
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
               >
@@ -97,7 +104,7 @@ const Navbar = () => {
                 <li onClick={handleSignOut}>
                   <a>Logout</a>
                 </li>
-              </ul>
+              </ul>}
             </div>
           </div>
         )}
