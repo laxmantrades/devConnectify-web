@@ -25,6 +25,7 @@ import {
 } from "./Components/ProtectedRoute";
 import ViewProfile from "./Components/ViewProfile";
 import Editprofile from "./Components/Editprofile";
+import Project from "./Components/Projects";
 
 const appRouter = createBrowserRouter([
   {
@@ -104,6 +105,14 @@ const appRouter = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <Editprofile />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "projects",
+        element: (
+          <ProtectedRoute>
+            <Project/>
           </ProtectedRoute>
         ),
       },
