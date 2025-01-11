@@ -20,7 +20,7 @@ const Project=()=>{
         fetchProjects()
     },[])
     return(
-        <div>
+        <div className="bg-gray-100 h-screen">
             <ProjectCard projects={projects}/>
         </div>
     )

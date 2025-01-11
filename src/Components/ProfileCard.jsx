@@ -1,10 +1,15 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, Navigate } from "react-router";
+import ProjectCard from "./ProjectCard";
+import { useLoadPersonalProjectsQuery } from "../Features/projectApi";
 
 const ProfileCard = ({user}) => {
   
   const button=useSelector((store)=>store.editProfileButton)
+  const {data}=useLoadPersonalProjectsQuery()
+ 
+  
  
   const{about,firstName,lastName,photoUrl,skills}=user
 
@@ -50,11 +55,12 @@ const ProfileCard = ({user}) => {
           <div className="w-full">
             <div className="card bg-base-200 shadow-xl mt-5 lg:mt-10 ml-4">
               <div className="card-body">
+                <div className="flex justify-between">
                 <h2 className="card-title">Recent Projects</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions justify-end">
-                  <button className="btn btn-primary">Buy Now</button>
+                <button className="btn btn-primary">Create a Project</button>
                 </div>
+                
+                <ProjectCard projects={data?.project}/>
               </div>
             </div>
           </div>
