@@ -7,30 +7,13 @@ import { removeALLFeed } from "../utils/feedSlice";
 import { useEffect, useState } from "react";
 
 const Navbar = () => {
-  const user = useSelector((store) => store?.user);
+  const user = useSelector((store) => store?.auth.user);
   const [button,setButton]=useState(false)
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const fetchUser = async () => {
-    if (user) return;
- 
-    
-      const res = await axios.get(
-        BASE_URL + "profile/view",
-
-        {
-          withCredentials: true,
-        }
-      );
-      dispatch(addUser(res.data));
-      
   
-  };
-  useEffect(() => {
-    
-    fetchUser();
-  }, []);
+  
   const handleSignOut = async () => {
    
       const res = await axios.post(

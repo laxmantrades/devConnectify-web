@@ -12,7 +12,7 @@ import ProfileCard from "./ProfileCard";
 import { hideEditButton } from "../utils/editProfile";
 
 const Profile = () => {
-    const userData=useSelector(store=>store?.user)
+    const userData=useSelector(store=>store?.auth.user)
     const dispatch=useDispatch()
     useEffect(()=>{
         dispatch(hideButton(false))

@@ -8,7 +8,7 @@ import Usercard from "./UserCard";
 import { hideButton } from "../utils/buttonSlice";
 
 function Editprofile() {
-  const userdata=useSelector((store)=>store?.user)
+  const userdata=useSelector((store)=>store?.auth.user)
   const emailId = userdata?.emailId || "";
   const [firstName, setfirstName] = useState(userdata?.firstName || "");
   const [lastName, setLastName] = useState(userdata?.lastName || "");
