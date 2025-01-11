@@ -1,16 +1,15 @@
 import {
-  BrowserRouter,
+  
   createBrowserRouter,
-  Route,
+
   RouterProvider,
-  Routes,
+
 } from "react-router";
 import Login from "./Components/Login";
 import Navbar from "./Components/Navbar";
 import Body from "./Components/Body";
 import Feed from "./Components/Feed";
-import appStore from "./utils/appStore";
-import { Provider } from "react-redux";
+
 import Profile from "./Components/Profile";
 import Connection from "./Components/Connection";
 import Requests from "./Components/Requests";
@@ -26,6 +25,7 @@ import {
 import ViewProfile from "./Components/ViewProfile";
 import Editprofile from "./Components/Editprofile";
 import Project from "./Components/Projects";
+import ViewProject from "./Components/ViewProject";
 
 const appRouter = createBrowserRouter([
   {
@@ -116,14 +116,22 @@ const appRouter = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+      {
+        path: "project/view/:projectId",
+        element: (
+          <ProtectedRoute>
+            <ViewProject/>
+          </ProtectedRoute>
+        ),
+      },
     ],
   },
 ]);
 function App() {
   return (
-    <Provider store={appStore}>
+    
       <RouterProvider router={appRouter} />
-    </Provider>
+  
   );
 }
 
