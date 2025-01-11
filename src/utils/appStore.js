@@ -1,20 +1,18 @@
-import buttonSlice from "./buttonSlice";
-import editProfile from "./editProfile";
-import feedSlice from "./feedSlice";
-import requestSlice from "./requestSlice";
-import searchSlice from "./searchSlice";
-import userSlice from "./userSlice";
+import { userApi } from "../Features/userApi";
+
 
 import { configureStore } from "@reduxjs/toolkit";
+import rootReducer from "./rootReducer";
+import { projectApi } from "../Features/projectApi";
 
 const appStore = configureStore({
-  reducer: {
-    user: userSlice,
-    feed: feedSlice,
-    request: requestSlice,
-    button:buttonSlice,
-    search:searchSlice,
-    editProfileButton:editProfile
-  },
+  reducer: rootReducer,
+  middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(userApi.middleware,projectApi.middleware)
 });
 export default appStore;
+const initializeApp = async () => {
+  await appStore.dispatch(
+    userApi.endpoints.loadUser.initiate({}, { forceRefetch: true })
+  );
+};
+initializeApp();
