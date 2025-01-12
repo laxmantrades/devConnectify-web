@@ -43,7 +43,7 @@ const Navbar = () => {
         </div>
         {user && (
           <div className="flex-none gap-2">
-            <div>{"Welcome " + user?.firstName}</div>
+            <div className="hidden sm:block">{"Welcome " + user?.firstName}</div>
             <div className="dropdown dropdown-end mr-6">
               <div
                 tabIndex={0}

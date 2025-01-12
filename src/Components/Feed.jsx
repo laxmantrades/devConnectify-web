@@ -57,7 +57,7 @@ const Feed = () => {
     <div className="flex items-center justify-center bg-gradient-to-r from-black to-">
       <div className="mt-4">
         <h1 className="text-center text-xl font-bold">Search By Name</h1>
-        <div className="flex items-center ">
+        <div className="sm:flex items-center ">
           <input
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}

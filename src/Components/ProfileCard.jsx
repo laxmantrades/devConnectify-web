@@ -25,45 +25,36 @@ const ProfileCard = ({user}) => {
             ></img>
           </div>
           <div className="ml-24  ">
-            <div className=" flex justify-between ">
+            <div className=" flex justify-between ml-2">
               <div>
-                <h1 className="text-xl font-bold">{firstName +""+lastName}</h1>
-                <h1>JavaScript</h1>
+                <h1 className="text-xl font-bold ">{firstName +""+lastName}</h1>
+                <h1>{skills}</h1>
+                <div className="Font-bold text-xl mt-4">
+                  <h1>About:</h1>
+                  {about}
+                  </div>
                 </div>
                 {button &&<Link to={"edit"} > <button  className="mt-1 font-normal mr-2 btn btn-primary">Edit Profile </button></Link>}
             </div>
             
+
+            
           </div>
         </div>
         <div className="lg:flex">
-          <div>
-            <div className="card bg-base-200 w-full lg:w-96 shadow-xl mt-5 lg:mt-10 ml-2 ">
-              <div className="card-body">
-                <h2 className="card-title">About</h2>
-                <p>{about}</p>
-              </div>
-            </div>
-            <div className="card bg-base-200 w-full lg:w-96 shadow-xl mt-5 lg:mt-10 ml-2">
-              <div className="card-body">
-                <h2 className="card-title text-center">Skills</h2>
-                <h1 className="flex space-x-3">
-                  {skills}
-                </h1>
-              </div>
-            </div>
-          </div>
-          <div className="w-full">
-            <div className="card bg-base-200 shadow-xl mt-5 lg:mt-10 ml-4">
+        <div className="w-full">
+            <div className="card bg-base-200 shadow-xl mt-5 lg:mt-10 md:ml-4">
               <div className="card-body">
                 <div className="flex justify-between">
-                <h2 className="card-title">Recent Projects</h2>
-                <button className="btn btn-primary">Create a Project</button>
+                <h2 className="card-title">Your Projects</h2>
+                <Link to={"/create-project"}><button  className="btn btn-primary">Create a Project</button></Link>
                 </div>
                 
                 <ProjectCard projects={data?.project}/>
               </div>
             </div>
           </div>
+         
         </div>
       </div>
     </div>

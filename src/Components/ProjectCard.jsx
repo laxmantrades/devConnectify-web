@@ -6,41 +6,42 @@ const ProjectCard = ({ projects }) => {
   }
 
   return (
-    <div className="flex items-center justify-center p-2 ">
-      <div className="container md:w-2/3 lg:max-w-5xl">
+    <div className="flex sm:items-center sm:justify-center p-1 sm:p-2 ">
+      <div className="container   lg:max-w-5xl">
         {projects
           ? projects.map((project) => (
-              <div
-                key={project._id}
+              <Link key={project._id} to={"/project/view/"+project?._id}><div
+                
                 className="card bg-white  h-45  mt-2 flex shadow-2xl"
               >
                 <div className=" p-4 flex  ">
                   <img
-                    className="h-40 w-40 rounded-xl object-cover "
-                    src={project.projectImage}
+                    className="  h-32 w-32 rounded-xl object-cover "
+                    src={project?.projectImage}
                   />
                   <div className="ml-8 w-full">
                     <h1 className="text-2xl font-bold">
                       {project?.projectName}
                     </h1>
-                    <p className="overflow-hidden text-blue-600 font-bold">
-                      {project?.description}
-                    </p>
+                    <div className="overflow-hidden text-blue-600 font-bold h-5 md:w-60 lg:w-full" dangerouslySetInnerHTML={{ __html: project?.description }}>
+                      
+                    </div>
                     <h1 className="mt-5">{project.skills}</h1>
                     <div className="flex items-center justify-between w-full">
                       <div className="flex items-center space-x-2">
                         <img
-                          className="h-12 w-12 object-cover object-top rounded-full mt-2"
+                          className=" h-6 w-6 sm:h-12 sm:w-12 object-cover object-top rounded-full mt-2"
                           src={project?.creator?.photoUrl}
                         />
                         <h1>{project?.creator?.firstName}</h1>
                         <h1>{project?.creator?.lastName}</h1>
                       </div>
-                      <Link to={"/project/view/"+project?._id}><button className="btn ml-auto ">View Project</button></Link>
+                      <Link to={"/project/view/"+project?._id}><button className="btn ml-auto hidden sm:block ">View Project</button></Link>
                     </div>
                   </div>
                 </div>
               </div>
+              </Link>
             ))
           : Array.from({ length: 3 }).map((index) => <LoadingUi key={index} />)}
       </div>

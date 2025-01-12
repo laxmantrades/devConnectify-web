@@ -26,6 +26,7 @@ import ViewProfile from "./Components/ViewProfile";
 import Editprofile from "./Components/Editprofile";
 import Project from "./Components/Projects";
 import ViewProject from "./Components/ViewProject";
+import CreateProject from "./Components/CreateProject";
 
 const appRouter = createBrowserRouter([
   {
@@ -121,6 +122,14 @@ const appRouter = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <ViewProject/>
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "create-project",
+        element: (
+          <ProtectedRoute>
+            <CreateProject/>
           </ProtectedRoute>
         ),
       },

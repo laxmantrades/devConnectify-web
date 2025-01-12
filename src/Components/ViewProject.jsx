@@ -34,7 +34,7 @@ const ViewProject=()=>{
                 </div>
                 <div>
                     <h1 className="text-2xl mt-4 ">Project Description</h1>
-                    <p>{description}</p>
+                    <div dangerouslySetInnerHTML={{ __html: description }}></div>
                 </div>
                 </div>
                 

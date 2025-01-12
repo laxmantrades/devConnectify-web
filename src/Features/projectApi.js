@@ -17,7 +17,14 @@ export const projectApi = createApi({
     loadPersonalProjects: builder.query({
       query: () => ({ url: "myprojects", method: "GET" }),
     }),
+    createProject:builder.mutation({
+     query:(input)=>({
+      url:"create-project",
+      method:"POST",
+      body:input
+     })
+    })
   }),
 });
-export const { useFetchProjectQuery, useLoadPersonalProjectsQuery } =
+export const { useFetchProjectQuery, useLoadPersonalProjectsQuery ,useCreateProjectMutation} =
   projectApi;
