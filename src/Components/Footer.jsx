@@ -6,7 +6,7 @@ const Footer = () => {
     
 
  
-    <footer className="footer  bg-base-200 text-base-content p-10">
+    <footer className="footer  bg-base-200 text-base-content p-10 hidden">
     <aside>
       <svg
         width="50"

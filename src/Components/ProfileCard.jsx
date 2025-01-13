@@ -44,7 +44,7 @@ const ProfileCard = ({user}) => {
         <div className="lg:flex">
         <div className="w-full">
             <div className="card bg-base-200 shadow-xl mt-5 lg:mt-10 md:ml-4">
-              <div className="card-body">
+              <div className="sm:card-body p-1 sm:p-4">
                 <div className="flex justify-between">
                 <h2 className="card-title">Your Projects</h2>
                 <Link to={"/create-project"}><button  className="btn btn-primary">Create a Project</button></Link>

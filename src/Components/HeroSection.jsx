@@ -7,23 +7,23 @@ const HeroSection = () => {
  const height=useWindowHeight()
   return (
     <div
-      className={`bg-neutral-900 lg:py-80 sm:py-40 md:px-20 py-32 px-8`}
+      className={`bg-neutral-900 lg:py-80 sm:py-40 md:px-20 py-32 px-8 `}
       style={{ height: `${height}px` }}
     >
-      <div className="container mx-auto max-w-6xl">
+      <div className="container mx-auto max-w-6xl ">
         <div className="md:flex">
           <div className="text-center md:text-left lg:text-left">
             <h1 className="sm:hidden hidden md:block lg:block text-4xl md:text-6xl font-bold text-white">
               Connect
             </h1>
-            <div className="flex md:flex items-center justify-center md:items-start md:justify-start md:flex-wrap">
-              <h1 className="md:hidden sm:block text-4xl md:text-6xl font-bold text-white mr-2">
+            <div className=" md:flex items-center  sm:justify-center md:items-start md:justify-start md:flex-wrap">
+              <h1 className="block md:hidden  text-5xl md:text-6xl font-bold text-white mr-2">
                 Connect
               </h1>
-              <h1 className="text-4xl md:text-6xl font-bold text-white">
+              <h1 className="text-5xl md:text-6xl font-bold text-white">
                 Collaborate.
               </h1>
-              <h1 className="text-4xl md:text-6xl font-bold text-blue-500">
+              <h1 className="text-5xl md:text-6xl font-bold text-blue-500">
                 .Code
               </h1>
             </div>
