@@ -1,14 +1,21 @@
-import { useParams } from "react-router";
+import { Navigate, useNavigate, useParams } from "react-router";
 import { useFetchProjectQuery } from "../Features/projectApi";
+import { useSelector } from "react-redux";
 
 const ViewProject = () => {
+  const navigate=useNavigate()
   const params = useParams();
+  const userId=useSelector((store)=>store?.auth?.user?._id)
+  
+  
   const { projectId } = params;
 
   const { data, isLoading, isError } = useFetchProjectQuery(projectId);
   if (!data) return;
-  const { skills, projectName, description, photoUrl, creator, projectImage } =
+  const { skills, projectName, description, photoUrl, creator, projectImage,_id } =
     data?.project;
+  
+  
   return (
     <div className="flex sm:items-center sm:justify-center mt-2 ">
       <div className=" container md:w-2/3 ">
@@ -16,7 +23,7 @@ const ViewProject = () => {
           <div>
             <div className="flex">
             <h1 className="w-full font-bold text-3xl">{projectName}</h1>
-            <button className="btn btn-primary">Edit Button</button>
+           {userId===creator._id && <button onClick={()=>navigate(`/project/editproject/${_id}`)}  className="btn btn-primary">Edit Button</button>}
             </div>
             
            

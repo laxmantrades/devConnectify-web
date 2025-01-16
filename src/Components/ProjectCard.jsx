@@ -1,20 +1,22 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const ProjectCard = ({ projects }) => {
+  const navigate=useNavigate()
   if (projects && projects?.length === 0) {
     return <div>No projects found</div>;
   }
 
+
   return (
     <div className="sm:flex sm:items-center sm:justify-center p-1 sm:p-2 ">
-      <div className="container  lg:max-w-5xl">
+      <div className="container  lg:max-w-5xl" >
         {projects
           ? projects.map((project) => (
-              <Link to={"/project/view/" + project?._id}>
-                <div
-                  key={project?._id}
-                  className="card bg-white  h-45  mt-2 flex shadow-2xl"
-                >
+              <div
+                key={project?._id }
+                className="card bg-white  h-45  mt-2 flex shadow-2xl"
+              >
+                <Link to={"/project/view/" + project?._id}>
                   <div className=" p-4 flex  ">
                     <img
                       className="  h-32 w-32 rounded-xl object-cover "
@@ -30,7 +32,10 @@ const ProjectCard = ({ projects }) => {
                           __html: project?.description,
                         }}
                       ></div>
-                      <h1 className="mt-5 text-sm sm:text-base">{project.skills}</h1>
+                      <h1 className="mt-5 text-sm sm:text-base">
+                        {project.skills}
+                      </h1>
+                      
                       <div className="flex items-center justify-between w-full">
                         <div className="flex items-center space-x-2">
                           <img
@@ -40,18 +45,18 @@ const ProjectCard = ({ projects }) => {
                           <h1>{project?.creator?.firstName}</h1>
                           <h1>{project?.creator?.lastName}</h1>
                         </div>
-                        <Link to={"/project/view/" + project?._id}>
-                          <button className="btn ml-auto hidden sm:block ">
+                        
+                          <button onClick={()=>{navigate("/project/view/" + project?._id)}} className="btn ml-auto hidden sm:block ">
                             View Project
                           </button>
-                        </Link>
+                        
                       </div>
                     </div>
-                  </div>
-                </div>
-              </Link>
+                  </div>{" "}
+                </Link>
+              </div>
             ))
-          : Array.from({ length: 3 }).map((index) => <LoadingUi key={index} />)}
+          : Array.from({ length: 3 }).map((_,index) => <LoadingUi key={index} />)}
       </div>
     </div>
   );

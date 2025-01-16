@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { Link, Navigate } from "react-router";
+import { Link, Navigate, useParams } from "react-router";
 import ProjectCard from "./ProjectCard";
 import { useLoadPersonalProjectsQuery } from "../Features/projectApi";
 
 const ProfileCard = ({user}) => {
-  
+  const {userId}=useParams()
   const button=useSelector((store)=>store.editProfileButton)
-  const {data}=useLoadPersonalProjectsQuery()
+  const {data}=useLoadPersonalProjectsQuery(userId)
  
+  
   
  
   const{about,firstName,lastName,photoUrl,skills}=user

@@ -15,7 +15,7 @@ export const projectApi = createApi({
       }),
     }),
     loadPersonalProjects: builder.query({
-      query: () => ({ url: "myprojects", method: "GET" }),
+      query: (userId) => ({ url: "myprojects/"+userId, method: "GET" }),
     }),
     createProject:builder.mutation({
      query:(input)=>({
@@ -23,8 +23,15 @@ export const projectApi = createApi({
       method:"POST",
       body:input
      })
+    }),
+    editProject:builder.mutation({
+      query:({input,projectId})=>({
+        url:`/project/edit/${projectId}`,
+        method:"PATCH",
+        body:input
+      })
     })
   }),
 });
-export const { useFetchProjectQuery, useLoadPersonalProjectsQuery ,useCreateProjectMutation} =
+export const { useFetchProjectQuery, useLoadPersonalProjectsQuery ,useCreateProjectMutation,useEditProjectMutation} =
   projectApi;
