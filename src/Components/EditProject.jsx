@@ -3,6 +3,8 @@ import ProjectForm from "./ProjectForm";
 import { useEditProjectMutation, useFetchProjectQuery } from "../Features/projectApi";
 import { useNavigate, useParams } from "react-router";
 
+import { toast } from "sonner";
+
 const EditProject=()=>{
     
     const{projectId}=useParams()
@@ -14,6 +16,13 @@ const EditProject=()=>{
     const [editProject,{isSuccess}]=useEditProjectMutation()
     const {projectName,projectImage,description,skills}=data && data?.project||{}
   
+  
+    useEffect(()=>{
+      if (isSuccess) {
+        toast.success("Edited Project Successfully")
+        
+      }
+    },[isSuccess])
     const [input, setInput] = useState({
         projectName: projectName|| "",
         description: description||"",
@@ -37,7 +46,7 @@ const EditProject=()=>{
     
     
    
-   
+    console.log(isSuccess);
     
     
     
@@ -60,7 +69,7 @@ const EditProject=()=>{
   const handleSubmit=async ()=>{
     try {
        await  editProject({input,projectId})
-       navigate(`/project/view/${projectId}`)
+       await navigate(`/project/view/${projectId}`)
     } catch (error) {
         console.log(error);
         

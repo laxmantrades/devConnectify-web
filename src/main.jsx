@@ -9,6 +9,7 @@ import { BASE_URL } from "./utils/constants.js";
 import LoadingSpinner from "./Components/LoadingSpinner.jsx";
 import { addUser } from "./utils/userSlice.js";
 import { useLoadUserQuery } from "./Features/userApi.js";
+import { Toaster } from "sonner";
 const Custom = ({ children }) => {
   
     const {isLoading}=useLoadUserQuery()
@@ -24,6 +25,7 @@ createRoot(document.getElementById("root")).render(
   
     <Provider store={appStore}>
       <Custom>
+        <Toaster/>
       <App />
       </Custom>
     </Provider>

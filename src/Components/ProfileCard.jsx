@@ -7,7 +7,8 @@ import { useLoadPersonalProjectsQuery } from "../Features/projectApi";
 const ProfileCard = ({user}) => {
   const {userId}=useParams()
   const button=useSelector((store)=>store.editProfileButton)
-  const {data}=useLoadPersonalProjectsQuery(userId)
+  const {data,isError}=useLoadPersonalProjectsQuery(userId?userId:"")
+  
  
   
   
