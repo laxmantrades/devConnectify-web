@@ -9,7 +9,7 @@ const ProjectCard = ({ projects }) => {
 
   return (
     <div className="sm:flex sm:items-center sm:justify-center p-1 sm:p-2 ">
-      <div className="container  lg:max-w-5xl" >
+      <div className="container  lg:max-w-7xl" >
         {projects
           ? projects.map((project) => (
               <div

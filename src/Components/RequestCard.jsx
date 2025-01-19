@@ -34,7 +34,7 @@ const RequestCard = ({ user }) => {
       
         <div className="flex items-center justify-center mt-2">
           <div className="p-2 bg-neutral    lg:w-2/5 flex items-center rounded-xl justify-around">
-            <img className="w-20 ml-4 mr-4 rounded-full" src={photoUrl}></img>
+            <img className="w-20 h-20 object-top ml-4 mr-4 rounded-full object-cover " src={photoUrl}></img>
             <div className="mt-2">
               <h1 className="text-white text-xl">
                 {firstName + " " + lastName}

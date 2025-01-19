@@ -24,6 +24,8 @@ const Usercard = ({ userdata }) => {
 
       dispatch(removeFeed(_id));
     } catch (err) {
+      console.log(err);
+      
       navigate("/error")
     }
   };

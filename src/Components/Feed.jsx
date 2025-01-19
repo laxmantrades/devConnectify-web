@@ -54,7 +54,7 @@ const Feed = () => {
   }
 
   return (
-    <div className="flex items-center justify-center bg-gradient-to-r from-black to-">
+    <div className="flex items-center justify-center ">
       <div className="mt-4">
         <h1 className="text-center text-xl font-bold">Search By Name</h1>
         <div className="sm:flex items-center ">
@@ -70,12 +70,12 @@ const Feed = () => {
           </button>
         </div>
         <Usercard userdata={userdata[0]} />
-        <div className="w-full bg-gradient-to-b from-red-400 to-indigo-300 rounded-xl text-white font-bold text-center h-64 flex items-center justify-center  shadow-2xl mt-5 ">
+        <div className="w-full bg-gradient-to-b from-red-400 to-indigo-300 rounded-xl text-black font-bold text-center h-64 flex items-center justify-center  shadow-2xl mt-5 ">
           <div>
             <h1 className="shadow-2xl bg-transparent text-4xl">Explore Projects</h1>
             <h1 className="text-xl">Want to develope skills? </h1>
             <h1 className="text-xl">Collaborate with other developers! </h1>
-            <h1 onClick={()=>navigate("/projects")} className="underline mt-5">Click here</h1>
+            <h1 onClick={()=>navigate("/projects")} className="underline mt-5 cursor-pointer ">Click here</h1>
           </div>
         </div>
       </div>

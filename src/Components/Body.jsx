@@ -15,7 +15,7 @@ const Body = () => {
   return (
     <div className=" block sm:flex sm:flex-col min-h-screen">
       <Navbar />
-      <main  className="sm:flex-grow">
+      <main  className="sm:flex-grow ">
       <Outlet />
       </main>
       

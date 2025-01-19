@@ -59,7 +59,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center mt-10">
+    <div className="flex items-center justify-center mt-10 ">
       <div className="card border  shadow-2xl text-black  w-96 ">
         <div className="card-body">
           {signUp && (

@@ -7,13 +7,21 @@ import { useLoadPersonalProjectsQuery } from "../Features/projectApi";
 const ProfileCard = ({user}) => {
   const {userId}=useParams()
   const button=useSelector((store)=>store.editProfileButton)
+  const loggedinUser=useSelector((store)=>store?.auth.user?._id)
   const {data,isError}=useLoadPersonalProjectsQuery(userId?userId:"")
+  console.log(user);
+  
+  
+  
+  
+  
+  
   
  
   
   
  
-  const{about,firstName,lastName,photoUrl,skills}=user
+  const{about,firstName,lastName,photoUrl,skills,_id}=user
 
   return (
     <div className="flex items-center justify-center w-full ">
@@ -48,8 +56,8 @@ const ProfileCard = ({user}) => {
             <div className="card bg-base-200 shadow-xl mt-5 lg:mt-10 md:ml-4">
               <div className="sm:card-body p-1 sm:p-4">
                 <div className="flex justify-between">
-                <h2 className="card-title">Your Projects</h2>
-                <Link to={"/create-project"}><button  className="btn btn-primary">Create a Project</button></Link>
+                <h2 className="card-title">{firstName} Projects</h2>
+                {_id===loggedinUser&&<Link to={"/create-project"}><button  className="btn btn-primary">Create a Project</button></Link>}
                 </div>
                 
                 <ProjectCard projects={data?.project}/>

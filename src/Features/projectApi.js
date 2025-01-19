@@ -36,6 +36,13 @@ export const projectApi = createApi({
       }),
       invalidatesTags: ["Refetch"],
     }),
+    loadnetworkproject:builder.query({
+      query:()=>({
+        url:"projects/interested&accepted",
+        method:"GET",
+        
+      })
+    })
   }),
 });
 export const {
@@ -43,4 +50,5 @@ export const {
   useLoadPersonalProjectsQuery,
   useCreateProjectMutation,
   useEditProjectMutation,
+  useLoadnetworkprojectQuery
 } = projectApi;
