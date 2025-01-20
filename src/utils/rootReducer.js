@@ -7,6 +7,7 @@ import requestSlice from "./requestSlice";
 import searchSlice from "./searchSlice";
 import editProfile from "./editProfile";
 import { projectApi } from "../Features/projectApi";
+import { chatApi } from "../Features/chatApi";
 
 const rootReducer=combineReducers({
     [userApi.reducerPath]:userApi.reducer,
@@ -16,7 +17,8 @@ const rootReducer=combineReducers({
     button:buttonSlice,
     search:searchSlice,
     editProfileButton:editProfile,
-    [projectApi.reducerPath]:projectApi.reducer
+    [projectApi.reducerPath]:projectApi.reducer,
+    [chatApi.reducerPath]:chatApi.reducer
     
 })
 export default rootReducer

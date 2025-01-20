@@ -33,27 +33,37 @@ const Connection = () => {
 
   return (
     <div className="flex items-center justify-center ">
-      <div className="md:w-2/3 lg:w-2/3">
+      <div className="md:w-2/3 lg:w-2/3 max-w-5xl">
         <h1 className="m-4 text-center text-3xl">Connection Lists</h1>
         {connection &&
           connection?.map((user) => {
-            const { firstName, lastName, photoUrl, about } = user;
+            const { firstName, lastName, photoUrl, about,_id } = user;
             return (
-              <Link key={user._id} to={`/profile/${user._id}`}><div  className="flex  m-4 p-2 h-26  bg-slate-600 rounded-lg shadow-2xl">
-                <div className="">
+              <div key={user._id} ><div  className="flex justify-between  m-4 p-2 h-26  bg-slate-600 rounded-lg shadow-2xl">
+              
+                <Link to={`/profile/${user._id}`}><div className="flex space-x-2">
                   <img
-                    className="object-top w-28 h-28  mx-2 rounded-full object-cover "
+                    className="object-top w-14 h-14 sm:w-28 sm:h-28  mx-2 rounded-full object-cover max-w-none "
                     src={photoUrl}
                   ></img>
-                </div>
-                <div>
-                  <h1 className="text-2xl text-white">
+                  <div className="">
+                  <h1 className="text-2xl text-white ">
                     {firstName + " " + lastName}
                   </h1>
                   <h1 className="text-white">{about}</h1>
                 </div>
+                </div>
+                </Link>
+                
+                
+                <div className="flex justify-end">
+                
+                <button onClick={()=>navigate(`/chat/${_id}`)} className= "  text-xl btn btn-primary">Chat</button>
+                
+                </div>
+                
               </div>
-              </Link>
+              </div>
             );
           })}
       </div>

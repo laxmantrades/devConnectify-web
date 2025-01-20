@@ -28,6 +28,7 @@ import Project from "./Components/Projects";
 import ViewProject from "./Components/ViewProject";
 import CreateProject from "./Components/CreateProject";
 import EditProject from "./Components/EditProject";
+import Chat from "./Components/Chat";
 
 const appRouter = createBrowserRouter([
   {
@@ -139,6 +140,14 @@ const appRouter = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <EditProject/>
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "chat/:targetUserId",
+        element: (
+          <ProtectedRoute>
+            <Chat/>
           </ProtectedRoute>
         ),
       },
