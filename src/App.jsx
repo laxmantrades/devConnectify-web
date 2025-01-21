@@ -1,49 +1,63 @@
-import {
-  
-  createBrowserRouter,
+import { createBrowserRouter, RouterProvider } from "react-router";
+import { lazy, Suspense } from "react";
+import LoadingSpinner from "./Components/LoadingSpinner";
+const Body = lazy(() => import("./Components/Body"));
 
-  RouterProvider,
+const Feed = lazy(() => import("./Components/Feed"));
 
-} from "react-router";
-import Login from "./Components/Login";
-import Navbar from "./Components/Navbar";
-import Body from "./Components/Body";
-import Feed from "./Components/Feed";
+const Profile = lazy(() => import("./Components/Profile"));
 
-import Profile from "./Components/Profile";
-import Connection from "./Components/Connection";
-import Requests from "./Components/Requests";
-import Setting from "./Components/Setting";
-import Error from "./Components/Error";
-import SearchPage from "./Components/SearchPage";
-import Home from "./Components/Home";
+const Connection = lazy(() => import("./Components/Connection"));
+
+const Requests = lazy(() => import("./Components/Requests"));
+
+const Setting = lazy(() => import("./Components/Setting"));
+
+const Error = lazy(() => import("./Components/Error"));
+
+const SearchPage = lazy(() => import("./Components/SearchPage"));
+
+const ViewProfile = lazy(() => import("./Components/ViewProfile"));
+
+const Editprofile = lazy(() => import("./Components/Editprofile"));
+
+const Project = lazy(() => import("./Components/Projects"));
+
+const ViewProject = lazy(() => import("./Components/ViewProject"));
+
+const CreateProject = lazy(() => import("./Components/CreateProject"));
+
+const EditProject = lazy(() => import("./Components/EditProject"));
+
+const Chat = lazy(() => import("./Components/Chat"));
+
 import {
   ConditionalHomePage,
   ConditionalLogin,
   ProtectedRoute,
 } from "./Components/ProtectedRoute";
-import ViewProfile from "./Components/ViewProfile";
-import Editprofile from "./Components/Editprofile";
-import Project from "./Components/Projects";
-import ViewProject from "./Components/ViewProject";
-import CreateProject from "./Components/CreateProject";
-import EditProject from "./Components/EditProject";
-import Chat from "./Components/Chat";
 
 const appRouter = createBrowserRouter([
   {
     path: "/",
-    element: <Body />,
+    element: <Suspense fallback={<LoadingSpinner/>}><Body /></Suspense>,
     children: [
       {
         path: "/",
-        element: <ConditionalHomePage />,
+        element: (
+         
+          
+            <ConditionalHomePage />
+         
+        ),
       },
       {
         path: "feed",
         element: (
           <ProtectedRoute>
-            <Feed />
+            
+              <Feed />
+           
           </ProtectedRoute>
         ),
       },
@@ -115,7 +129,7 @@ const appRouter = createBrowserRouter([
         path: "projects",
         element: (
           <ProtectedRoute>
-            <Project/>
+            <Project />
           </ProtectedRoute>
         ),
       },
@@ -123,7 +137,7 @@ const appRouter = createBrowserRouter([
         path: "project/view/:projectId",
         element: (
           <ProtectedRoute>
-            <ViewProject/>
+            <ViewProject />
           </ProtectedRoute>
         ),
       },
@@ -131,7 +145,7 @@ const appRouter = createBrowserRouter([
         path: "create-project",
         element: (
           <ProtectedRoute>
-            <CreateProject/>
+            <CreateProject />
           </ProtectedRoute>
         ),
       },
@@ -139,7 +153,7 @@ const appRouter = createBrowserRouter([
         path: "project/editproject/:projectId",
         element: (
           <ProtectedRoute>
-            <EditProject/>
+            <EditProject />
           </ProtectedRoute>
         ),
       },
@@ -147,7 +161,7 @@ const appRouter = createBrowserRouter([
         path: "chat/:targetUserId",
         element: (
           <ProtectedRoute>
-            <Chat/>
+            <Chat />
           </ProtectedRoute>
         ),
       },
@@ -155,11 +169,7 @@ const appRouter = createBrowserRouter([
   },
 ]);
 function App() {
-  return (
-    
-      <RouterProvider router={appRouter} />
-  
-  );
+  return <RouterProvider router={appRouter} />;
 }
 
 export default App;

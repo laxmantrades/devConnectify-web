@@ -57,13 +57,13 @@ const Feed = () => {
     <div className="flex items-center justify-center ">
       <div className="mt-4">
         <h1 className="text-center text-xl font-bold">Search By Name</h1>
-        <div className="sm:flex items-center ">
+        <div className="sm:flex items-center ml-2 justify-between">
           <input
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
             type="text"
             placeholder="Enter name you want to search"
-            className="input input-bordered input-primary w-96"
+            className="input input-bordered input-primary w-3/4"
           />
           <button onClick={handleClick} className="btn btn-primary ml-1">
             Search

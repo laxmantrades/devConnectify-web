@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { createSocketConnection } from "../utils/socket";
 import { useParams } from "react-router";
 import { useSelector } from "react-redux";
-import axios from "axios";
-import { useFetchProjectQuery } from "../Features/projectApi";
+
 import { useFetchMessagesQuery } from "../Features/chatApi";
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 const Chat = () => {
   const [newmessage, setNewMessage] = useState("");
@@ -14,7 +14,9 @@ const Chat = () => {
   const { firstName, lastName, photoUrl } = myuser;
   const userId = myuser._id;
 
-  const { data, isLoading } = useFetchMessagesQuery(targetUserId);
+  const { data,isError, isLoading } = useFetchMessagesQuery(targetUserId);
+  
+  
   useEffect(() => {
     const socket = createSocketConnection();
     socket.emit("joinChat", { userId, targetUserId });
@@ -69,13 +71,29 @@ const Chat = () => {
     });
     setNewMessage("");
   };
+  const user=data&&data?.chat?.participants?.filter((participant)=>{
+    return participant._id===targetUserId
+
+    })
+    
+    
+  
+    console.log(user);
+    
+    
+  
+  
+  
   
 
   return (
-    <div className="flex mt-10  h-[70vh] md:mx-auto border border-gray-500 flex-col max-w-5xl">
-      <h1 className="border border-gray-500 text-xl font-bold px-2 text-center">Hello</h1>
+    !isError?<div className="flex mt-10 h-[90vh]  md:h-[70vh] md:mx-auto border md:border-gray-500 flex-col max-w-5xl ">
+      <div className="border border-gray-500 text-xl font-bold px-2 flex p-2 items-center space-x-3">
+        <img src={user&&user[0]?.photoUrl} className="w-10 h-10 rounded-full object-cover object-top"/>
+        <h1>{user&&user[0]?.firstName+" "+user[0]?.lastName}</h1>
+      </div>
 
-      <div ref={chatContainerRef} className=" flex-1 overflow-scroll p-2">
+      {!isError&&<div ref={chatContainerRef} className=" flex-1 overflow-scroll p-2">
         {/*chat section*/}
         {messages.map((message, index) => (
           <div
@@ -86,7 +104,7 @@ const Chat = () => {
           >
             <div className="chat-image avatar">
               <div className="w-10 rounded-full">
-                <img
+                <LazyLoadImage
                   alt="Tailwind CSS chat bubble component"
                   src={message.photoUrl}
                 />
@@ -101,8 +119,8 @@ const Chat = () => {
           </div>
         ))}
         {/*chat section*/}
-      </div>
-      <div className="border-t border-gray-500 text-xl flex items-center p-4 gap-2">
+      </div>}
+      {!isError&&<div className="border-t-2 border-gray-500 text-xl flex items-center p-4 gap-2 ">
         <input
           value={newmessage}
           onChange={(e) => setNewMessage(e.target.value)}
@@ -111,8 +129,8 @@ const Chat = () => {
         <button onClick={handleSend} className="btn btn-primary">
           Send
         </button>
-      </div>
-    </div>
+      </div>}
+    </div>:<div className="text-xl text-center">Sorry you are smart but you are not connected</div>
   );
 };
 export default Chat;

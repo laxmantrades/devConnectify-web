@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router";
-
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import 'react-lazy-load-image-component/src/effects/blur.css';
 const ProjectCard = ({ projects }) => {
   const navigate=useNavigate()
   if (projects && projects?.length === 0) {
@@ -18,9 +19,12 @@ const ProjectCard = ({ projects }) => {
               >
                 <Link to={"/project/view/" + project?._id}>
                   <div className=" p-4 flex  ">
-                    <img
-                      className="  h-32 w-32 rounded-xl object-cover "
+                    <LazyLoadImage
+                      alt="loading"
+                      effect="blur"
+                      className="  h-32  rounded-xl object-cover "
                       src={project?.projectImage}
+                      
                     />
                     <div className="ml-8 w-full">
                       <h1 className="sm:text-2xl font-bold">
@@ -38,7 +42,8 @@ const ProjectCard = ({ projects }) => {
                       
                       <div className="flex items-center justify-between w-full">
                         <div className="flex items-center space-x-2">
-                          <img
+                          <LazyLoadImage
+                          alt="loading"
                             className=" h-6 w-6 sm:h-12 sm:w-12 object-cover object-top rounded-full mt-2"
                             src={project?.creator?.photoUrl}
                           />
