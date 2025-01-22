@@ -31,7 +31,7 @@ const Usercard = ({ userdata }) => {
   };
 
   return (
-    <div className="flex items-center justify-center mt-12 ">
+    <div className="flex items-center justify-center mt-6 ">
       <div className="card card-compact bg-base-100 w-96 shadow-xl">
         <figure>
           <img className="h-50" src={photoUrl} alt="Shoes" />

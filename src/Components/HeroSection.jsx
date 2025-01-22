@@ -7,7 +7,7 @@ const HeroSection = () => {
  const height=useWindowHeight()
   return (
     <div
-      className={`bg-neutral-900 lg:py-80 sm:py-40 md:px-20 py-32 px-8 `}
+      className={`bg-neutral-900 md:py-20 lg:py-80 sm:py-40 md:px-20 py-16 px-8 `}
       style={{ height: `${height}px` }}
     >
       <div className="container mx-auto max-w-6xl ">
@@ -34,9 +34,9 @@ const HeroSection = () => {
                 together.
               </h1>
               <div className="flex items-center  mt-10 space-x-2">
-                <button className="bg-blue-700 lg:text-xl p-2 rounded">
+              <Link to="/login"><button className="bg-blue-700 lg:text-xl p-2 rounded">
                   Get Started
-                </button>
+                </button></Link>
                 <button className="border border-blue-600 rounded md:text-base lg:text-xl p-2">
                   Learn More
                 </button>
@@ -44,7 +44,7 @@ const HeroSection = () => {
             </div>
           </div>
 
-          <div className="text-center flex items-center justify-center bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-lg max-w-7xl px-32 h-40 md:mt-40 lg:mt-20">
+          <div className="text-center flex items-center justify-center bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-lg max-w-7xl px-32 mt-2 h-40 md:mt-40 lg:mt-20">
             <div className="text-white">
               <button className="rounded-full p-4 bg-green-500">
                 <Code2 strokeWidth={2} />
